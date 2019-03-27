@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Mildnoodles/weatherAPI/issues"
   },
-  "homepage": "https://github.com/Mildnoodles/weatherAPI#readme"
+  "homepage": "https://github.com/Mildnoodles/weatherAPI#readme",
+  "dependencies": {
+    "request": "^2.88.0"
+  }
 }
