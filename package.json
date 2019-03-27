@@ -1,0 +1,19 @@
+{
+  "name": "cyberrange-challenge",
+  "version": "1.0.0",
+  "description": "Weather app that tells reports the temperature based on zip code",
+  "main": "weather.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mildnoodles/weatherAPI.git"
+  },
+  "author": "Adam Tapp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mildnoodles/weatherAPI/issues"
+  },
+  "homepage": "https://github.com/Mildnoodles/weatherAPI#readme"
+}
