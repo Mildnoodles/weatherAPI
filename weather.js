@@ -2,6 +2,7 @@
 const request = require('request');
 const express = require('express');
 const weather = express();
+module.exports = weather;
 
 //Server Variables
 const port = 8080;
@@ -23,6 +24,7 @@ weather.get('/locations/:zipCode', function (req, res) {
     
     //Verifies the Scale is an acceptable value
     if (!(scale === "Celsius" || scale === "Fahrenheit")) {
+        res.statusCode = 404;
         res.end("Invalid scale. Valid scales are \"Fahrenheit\" and \"Celsius\"");
     }
     else {
@@ -31,7 +33,7 @@ weather.get('/locations/:zipCode', function (req, res) {
         getWeather(apiURL, scale).then((temperatureVal) => {
             //Contains the information we need to report
             let myObj = {
-                temperature : temp,
+                temperature : Math.round(temp),
                 scale : scale
             };
             //Assign the status code to the response statusCode field
@@ -59,7 +61,7 @@ function getWeather(URL, scale) {
             else {
                 //Process the information given by apiURL
                 //Temp is returned in Kelvin, so this converts Temp to Celsius
-                temp = Math.round(weatherInfo.main.temp - 273);
+                temp = weatherInfo.main.temp - 273;
                 if (scale === "Fahrenheit") {
                     temp = temp * (9/5) + 32;
                 }
@@ -78,5 +80,5 @@ weather.get('/*', function(req, res) {
 
 /* Express listener */
 weather.listen(port, function() {
-    console.log('Server is listening on port: ', port);
+    console.log('Server is listening on port:', port);
 });
